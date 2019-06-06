@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :api do
     namespace :v1 do
-      namespace :public do post 'login'                      => 'sessions#create_session'
+      namespace :public do
+        post 'signup'                     => 'users#create_user'
+        post 'login'                      => 'sessions#create_session'
 
         # Location routes
         get 'locations'                   => 'locations#fetch_locations'
