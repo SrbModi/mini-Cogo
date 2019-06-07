@@ -1,4 +1,7 @@
 class SessionService
+
+  include Constants
+
   def self.create_session(params)
     email = params[:email].present? ? params[:email].downcase : nil
     password = params[:password]
@@ -7,6 +10,11 @@ class SessionService
 
     user = User.where(email: email).first
     raise "No user exist with email #{email}" if user.blank?
+
+    if user.status != UserStatusType::INACTIVE
+      raise 'User Status Not Active'
+    end
+
 
     if user.password != password
       raise 'Password is not correct.'

@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       namespace :public do
-        post 'signup'                     => 'users#create_user'
-        post 'login'                      => 'sessions#create_session'
+        post 'login'         => 'sessions#create_session'
 
         # Location routes
         get 'locations'                   => 'locations#fetch_locations'
@@ -20,13 +19,18 @@ Rails.application.routes.draw do
         post 'users'                      => 'users#create_user'
         post 'logout'                     => 'sessions#delete_session'
 
-
         # Location routes
         get 'locations'                   => 'locations#fetch_locations'
         get 'nearby_locations'            => 'locations#fetch_nearby_locations'
 
         # search routes
         get 'search'                      => 'searchs#get_search_results'
+
+        # booking routes
+        get 'bookings'                    => 'bookings#get_all'
+        get 'booking/:id'                 => 'bookings#fetch_booking'
+        get 'my_booking'                  => 'bookings#get_my_booking'
+        post 'bookings'                   => 'bookings#create_booking'
 
       end
     end

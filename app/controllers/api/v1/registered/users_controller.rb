@@ -57,6 +57,6 @@ class Api::V1::Registered::UsersController < RegisteredController
   end
 
   def update_params
-    params.permit(:name, :phone_no, :company_name, :user_profile_pic_url)
+    params.permit(:name, :phone_no, :company_name, :user_profile_pic_url, :status)
   end
 end
